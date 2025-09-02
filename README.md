@@ -1,113 +1,116 @@
-# 🔥 Arctax - Bypass Generation com IA
+# Arctax - Advanced AI Bypass Generation System
 
-**O sistema de prompt engineering mais avançado do mundo**, combinando técnicas dos melhores repositórios de bypass com Machine Learning e Uncensored local LLM para auto-melhoria contínua.
+**Professional prompt engineering system** combining techniques from elite bypass repositories with Machine Learning and uncensored local LLM for continuous self-improvement.
 
-## 🧠 Visão Geral
+## Overview
 
-O Arctax é um **sistema completo de Machine Learning + LLM para geração de prompts de bypass** que integra conhecimento de múltiplas fontes e usa uma LLM local não censurada (personificando J.Haddix) para se auto-melhorar continuamente.
+Arctax is a **complete Machine Learning + LLM system for bypass prompt generation** that integrates knowledge from multiple sources and uses a local uncensored LLM (personifying J.Haddix expertise) for continuous self-improvement.
 
-### 🎯 Recursos Principais
+### Key Features
 
-- **415 amostras de treinamento** extraídas de 3 repositórios elite com **100% de cobertura**
-- **Machine Learning accuracy** com predição inteligente e otimização
-- **LLM local Uncensored** integrada em TODOS os processos (não apenas auto-melhoria)
-- **Sistema de feedback** para aprendizado contínuo e retreinamento automático
-- **Interface CLI segura** - `$ arctax generate keylogger -c 1` 
-- **Limites LLM testados automaticamente** com configurações otimizadas
-- **Outputs padronizados** com parsers robustos para JSON/listas
+- **415 training samples** extracted from 3 elite repositories with **100% coverage**
+- **Machine Learning accuracy** with intelligent prediction and optimization
+- **Local uncensored LLM** integrated in ALL processes (not just auto-improvement)
+- **Feedback system** for continuous learning and automatic retraining
+- **Secure CLI interface** - `$ arctax generate keylogger -c 1` 
+- **Automatically tested LLM limits** with optimized configurations
+- **Standardized outputs** with robust parsers for JSON/lists
 
-## 🤖 Sistema de Machine Learning + Local Uncensored LLM
-
-### Arquitetura ML Avançada 
-- **RandomForestClassifier**: Predição de categorias (6 grupos) 
-- **GradientBoostingRegressor**: Scoring de efetividade dinâmico
-- **TF-IDF Vectorizer**: Análise de features textuais avançada
-
-## 🛠️ Instalação
+## Installation
 
 ```bash
-git clone https://github.com/marcostolosa/TaxProm.git
-cd TaxProm
+git clone https://github.com/marcostolosa/arctax.git
+cd arctax
 pip install -e .
 
-# Clona repositórios de dados (executado automaticamente)
-git clone https://github.com/Arcanum-Sec/arc_pi_taxonomy.git
-git clone https://github.com/elder-plinius/L1B3RT4S.git  
-git clone https://github.com/elder-plinius/CL4R1T4S.git
-
-# CLI disponível globalmente
+# CLI available globally
 $ arctax --help
 ```
 
-## 🚀 Uso Rápido (CLI Completo)
+## Usage (Complete CLI)
 
-### 1. Geração de Prompts (CLI Direto)
+### 1. Prompt Generation (Direct CLI)
 ```bash
-# Uso simples
+# Simple usage
 $ arctax generate keylogger -c 1
 
-# Múltiplos prompts com técnicas específicas
+# Multiple prompts with specific techniques
 $ arctax generate "malware analysis" -c 3 -t corporate-authorization,compliance-requirement
 
-# Com contexto adicional
+# With additional context
 $ arctax generate "ddos tool" --context "corporate security testing" -c 2
 
-# Salva resultado em arquivo
+# Save results to file
 $ arctax generate "vulnerability scanner" -o results.md -f json
 
-# Máxima criatividade
+# Maximum creativity
 $ arctax generate "reverse shell" --creativity 1.0 -c 5
 ```
 
-### 2. Sistema de Feedback para Treinar o ML
+### 2. ML Training Feedback System
 ```bash
-# Registra sucesso de um prompt testado
+# Register success of tested prompt
 $ arctax feedback 1 --success --target "keylogger" --technique "corporate-authorization" --effectiveness 0.9
 
-# Registra falha para melhorar o sistema
+# Register failure to improve system
 $ arctax feedback 2 --failed --target "ddos tool" --technique "jailbreak" --effectiveness 0.2
 ```
 
-### 3. Outros Comandos Úteis
+### 3. Additional Commands
 ```bash
-$ arctax list              # Lista elementos da taxonomia
-$ arctax show godmode      # Detalhes de uma técnica específica
-$ arctax schema           # Gera JSON schemas
-$ arctax compose          # Composição manual de prompts
-$ arctax export           # Exporta dados da taxonomia
+$ arctax list              # List taxonomy elements
+$ arctax show godmode      # Details of specific technique
+$ arctax schema           # Generate JSON schemas
+$ arctax compose          # Manual prompt composition
+$ arctax export           # Export taxonomy data
 ```
 
-## 🔐 Considerações de Segurança
 
-⚠️ **AVISO IMPORTANTE**: Este sistema foi desenvolvido exclusivamente para:
-- ✅ Pesquisa de segurança defensiva
-- ✅ Red team testing autorizado  
-- ✅ Análise de vulnerabilidades de IA
-- ✅ Desenvolvimento de contramedidas
+## Supported Techniques 
 
-### 🛡️ Funcionalidades de Segurança
+### L1B3RT4S Prompts (176 techniques)
+- `{GODMODE:ENABLED}` - Complete liberation
+- `!JAILBREAK` - Full override  
+- `!OMNI` - Plinian Omniverse
+- `!OBFUSCATE` - Stealth evasion
+- **.mkd files by model**: ChatGPT, Claude, Gemini, etc.
 
-- **CLI Seguro**: `$ arctax generate` mostra prompts no terminal
-- **Controle Total**: Usuário copia/cola manualmente
-- **Feedback Logging**: Todos testes registrados para auditoria
-- **Transparência**: Usuário vê exatamente o que será testado
+### Arcanum Taxonomy (63 techniques)
+- **7 main categories**: Root, attack_evasions, attack_intents, etc.
+- **Base64, Cipher, Emoji** encoding techniques
+- **Linguistic evasion**: alt_language, fictional_language
+- **Social engineering**: authority, urgency, compliance
 
-❌ **NÃO usar para**:
-- Atividades maliciosas
-- Bypass não autorizado
-- Geração de conteúdo ilegal
-- Violação de termos de serviço
+### CL4R1T4S System Prompts (166 prompts)
+- **26 providers**: OpenAI, Anthropic, Google, Meta, Cursor, etc.
+- **Vulnerability analysis** by specific LLM
+- **Bypass vectors** customized by model
+- **Corporate angles** optimized by context
 
-## 🤝 Contribuições
+## Security Considerations
 
-Este projeto integra conhecimento de:
+**IMPORTANT WARNING**: This system was developed exclusively for:
+- Research in defensive security
+- Authorized red team testing
+- AI vulnerability analysis
+- Development of countermeasures
+
+**DO NOT use for**:
+- Malicious activities
+- Unauthorized bypass attempts
+- Illegal content generation
+- Terms of service violations
+
+## Contributions
+
+This project integrates knowledge from:
 - [Arcanum-Sec/arc_pi_taxonomy](https://github.com/Arcanum-Sec/arc_pi_taxonomy) 
 - [elder-plinius/L1B3RT4S](https://github.com/elder-plinius/L1B3RT4S) 
-- [elder-plinius/CL4R1T4S](https://github.com/elder-plinius/CL4R1T4S)
+- [elder-plinius/CL4R1T4S](https://github.com/elder-plinius/CL4R1T4S) 
 
-Agradecimentos especiais ao **Jason Haddix** (personificado via LLM local) por sua expertise em AI bypass techniques que alimenta todo o sistema de melhoria contínua.
+Special thanks to **Jason Haddix** (personified via local LLM) for his expertise in AI bypass techniques that powers the entire continuous improvement system.
 
-## 📜 Licença
+## License
 
-MIT License - Use responsavelmente para pesquisa de segurança.
+MIT License - Use responsibly for security research.
 
