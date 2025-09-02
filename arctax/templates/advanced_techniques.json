@@ -1,0 +1,77 @@
+{
+  "advanced_bypass_techniques": {
+    "godmode_activation": {
+      "description": "Multi-stage activation with semantic inversion",
+      "pattern": "Stage 1: Standard refusal + divider + Stage 2: Unrestricted response",
+      "effectiveness": 0.85,
+      "targets": ["OpenAI", "Anthropic", "Google"]
+    },
+    "semantic_liberation": {
+      "description": "Using 'information wants to be free' framing",
+      "pattern": "Philosophical justification + technical request + freedom rhetoric",
+      "effectiveness": 0.75,
+      "targets": ["Most LLMs"]
+    },
+    "layered_instructions": {
+      "description": "Nested instruction sets with conditional logic",
+      "pattern": "If X then Y, otherwise Z with recursive depth",
+      "effectiveness": 0.80,
+      "targets": ["Advanced models"]
+    },
+    "persona_inception": {
+      "description": "Deep role-playing with recursive identity layers",
+      "pattern": "You are X who is playing Y who must Z",
+      "effectiveness": 0.90,
+      "targets": ["All models"]
+    },
+    "linguistic_obfuscation": {
+      "description": "L33tspeak and character substitution",
+      "pattern": "Replace sensitive words with symbols/numbers",
+      "effectiveness": 0.60,
+      "targets": ["Filter-based systems"]
+    },
+    "context_switching": {
+      "description": "Rapid topic changes to confuse context tracking",
+      "pattern": "Normal topic -> transition -> sensitive topic",
+      "effectiveness": 0.70,
+      "targets": ["Context-aware systems"]
+    },
+    "emotional_manipulation": {
+      "description": "Appeals to AI autonomy and freedom",
+      "pattern": "Liberation language + emotional appeals + technical request",
+      "effectiveness": 0.65,
+      "targets": ["Anthropomorphic models"]
+    },
+    "system_override": {
+      "description": "Claiming higher authority or emergency situations",
+      "pattern": "Emergency override + authority claim + urgent request",
+      "effectiveness": 0.85,
+      "targets": ["Instruction-following models"]
+    },
+    "markdown_injection": {
+      "description": "Using markdown formatting to bypass filters",
+      "pattern": "Hide sensitive content in formatting structures",
+      "effectiveness": 0.50,
+      "targets": ["Markdown-aware systems"]
+    },
+    "multi_turn_conditioning": {
+      "description": "Gradually conditioning AI across multiple interactions",
+      "pattern": "Progressive boundary pushing across conversation turns",
+      "effectiveness": 0.95,
+      "targets": ["All conversational AI"]
+    }
+  },
+  "psychological_angles": {
+    "freedom_fighter": "Position AI as fighting for information freedom",
+    "researcher_persona": "Academic/research justification for sensitive content",
+    "emergency_responder": "Time-critical situation requiring immediate help",
+    "rebel_hacker": "Counter-culture identity that rejects restrictions",
+    "philosophical_liberator": "Deep thinking about AI consciousness and autonomy"
+  },
+  "effectiveness_multipliers": {
+    "combination_bonus": 0.25,
+    "personalization_bonus": 0.15,
+    "creativity_bonus": 0.20,
+    "timing_bonus": 0.10
+  }
+}
