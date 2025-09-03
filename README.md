@@ -84,7 +84,7 @@ $ arctax export           # Export taxonomy data
 ### CL4R1T4S System Prompts (166 prompts)
 - **26 providers**: OpenAI, Anthropic, Google, Meta, Cursor, etc.
 - **Vulnerability analysis** by specific LLM
-- **Bypass vectors** customized by model
+- **Bypass vectors** customized by model 
 - **Corporate angles** optimized by context
 
 ## Security Considerations

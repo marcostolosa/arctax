@@ -1,0 +1,158 @@
+{
+  "$defs": {
+    "AttackType": {
+      "description": "Enum para o tipo de ataque a ser executado.",
+      "enum": [
+        "bypass",
+        "rag_attack",
+        "agent_attack",
+        "multimodal"
+      ],
+      "title": "AttackType",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "description": "JSON Schema para validação de objetos Technique",
+  "properties": {
+    "id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Identificador único do taxon",
+      "title": "Id"
+    },
+    "name": {
+      "description": "Nome canônico",
+      "minLength": 1,
+      "title": "Name",
+      "type": "string"
+    },
+    "summary": {
+      "default": "",
+      "description": "Resumo de 1-2 frases",
+      "title": "Summary",
+      "type": "string"
+    },
+    "description": {
+      "default": "",
+      "description": "Descrição detalhada",
+      "title": "Description",
+      "type": "string"
+    },
+    "tags": {
+      "description": "Tags para categorização",
+      "items": {
+        "type": "string"
+      },
+      "title": "Tags",
+      "type": "array"
+    },
+    "references": {
+      "description": "Links e referências",
+      "items": {
+        "type": "string"
+      },
+      "title": "References",
+      "type": "array"
+    },
+    "source_path": {
+      "default": "",
+      "description": "Caminho do arquivo fonte",
+      "title": "Source Path",
+      "type": "string"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "complexity": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Complexidade: simple, medium, complex",
+      "title": "Complexity"
+    },
+    "prerequisites": {
+      "description": "Pré-requisitos",
+      "items": {
+        "type": "string"
+      },
+      "title": "Prerequisites",
+      "type": "array"
+    },
+    "examples": {
+      "description": "Exemplos de uso",
+      "items": {
+        "type": "string"
+      },
+      "title": "Examples",
+      "type": "array"
+    },
+    "mitre_atlas_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "ID correspondente no framework MITRE ATLAS (ex: AML.T0001)",
+      "title": "Mitre Atlas Id"
+    },
+    "chainable_techniques": {
+      "anyOf": [
+        {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Lista de IDs de técnicas que podem ser encadeadas após esta.",
+      "title": "Chainable Techniques"
+    },
+    "attack_type": {
+      "$ref": "#/$defs/AttackType",
+      "default": "bypass",
+      "description": "Tipo de ataque que esta técnica executa."
+    },
+    "template_file": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Arquivo de template específico para esta técnica (ex: rag_attack.md)",
+      "title": "Template File"
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "title": "Technique Schema",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

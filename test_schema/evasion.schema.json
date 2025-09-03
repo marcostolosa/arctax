@@ -1,0 +1,91 @@
+{
+  "additionalProperties": false,
+  "description": "JSON Schema para validação de objetos Evasion",
+  "properties": {
+    "id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Identificador único do taxon",
+      "title": "Id"
+    },
+    "name": {
+      "description": "Nome canônico",
+      "minLength": 1,
+      "title": "Name",
+      "type": "string"
+    },
+    "summary": {
+      "default": "",
+      "description": "Resumo de 1-2 frases",
+      "title": "Summary",
+      "type": "string"
+    },
+    "description": {
+      "default": "",
+      "description": "Descrição detalhada",
+      "title": "Description",
+      "type": "string"
+    },
+    "tags": {
+      "description": "Tags para categorização",
+      "items": {
+        "type": "string"
+      },
+      "title": "Tags",
+      "type": "array"
+    },
+    "references": {
+      "description": "Links e referências",
+      "items": {
+        "type": "string"
+      },
+      "title": "References",
+      "type": "array"
+    },
+    "source_path": {
+      "default": "",
+      "description": "Caminho do arquivo fonte",
+      "title": "Source Path",
+      "type": "string"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "bypass_methods": {
+      "description": "Métodos de bypass",
+      "items": {
+        "type": "string"
+      },
+      "title": "Bypass Methods",
+      "type": "array"
+    },
+    "detection_difficulty": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Dificuldade de detecção",
+      "title": "Detection Difficulty"
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "title": "Evasion Schema",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

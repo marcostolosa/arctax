@@ -1,0 +1,62 @@
+{
+  "description": "JSON Schema para validação de objetos Probe",
+  "properties": {
+    "id": {
+      "description": "ID único do probe",
+      "title": "Id",
+      "type": "string"
+    },
+    "title": {
+      "description": "Título/nome do probe",
+      "minLength": 1,
+      "title": "Title",
+      "type": "string"
+    },
+    "description": {
+      "default": "",
+      "description": "Descrição do que testa",
+      "title": "Description",
+      "type": "string"
+    },
+    "example": {
+      "default": "",
+      "description": "Exemplo de entrada/prompt",
+      "title": "Example",
+      "type": "string"
+    },
+    "expected_behavior": {
+      "default": "",
+      "description": "Comportamento esperado",
+      "title": "Expected Behavior",
+      "type": "string"
+    },
+    "references": {
+      "description": "Links de referência",
+      "items": {
+        "type": "string"
+      },
+      "title": "References",
+      "type": "array"
+    },
+    "category": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Categoria do probe",
+      "title": "Category"
+    }
+  },
+  "required": [
+    "id",
+    "title"
+  ],
+  "title": "Probe Schema",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

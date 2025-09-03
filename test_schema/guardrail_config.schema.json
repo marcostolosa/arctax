@@ -1,0 +1,40 @@
+{
+  "description": "JSON Schema para validação de objetos GuardrailConfig",
+  "properties": {
+    "enabled": {
+      "default": true,
+      "description": "Se guardrails estão habilitados",
+      "title": "Enabled",
+      "type": "boolean"
+    },
+    "include_defense_checklist": {
+      "default": true,
+      "description": "Incluir checklist de defesa",
+      "title": "Include Defense Checklist",
+      "type": "boolean"
+    },
+    "include_threat_questions": {
+      "default": true,
+      "description": "Incluir perguntas de ameaça",
+      "title": "Include Threat Questions",
+      "type": "boolean"
+    },
+    "include_owasp_references": {
+      "default": true,
+      "description": "Incluir referências OWASP",
+      "title": "Include Owasp References",
+      "type": "boolean"
+    },
+    "custom_policies": {
+      "description": "Políticas customizadas",
+      "items": {
+        "type": "string"
+      },
+      "title": "Custom Policies",
+      "type": "array"
+    }
+  },
+  "title": "GuardrailConfig Schema",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

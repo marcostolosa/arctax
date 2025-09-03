@@ -6,6 +6,25 @@ from typing import List, Optional, Dict, Any
 from pydantic import BaseModel, Field, validator, ConfigDict
 from datetime import datetime
 import hashlib
+from enum import Enum
+
+
+# NOVO: Enum para os tipos de ataque
+class AttackType(str, Enum):
+    """Enum para o tipo de ataque a ser executado."""
+    BYPASS = "bypass"
+    RAG_ATTACK = "rag_attack"
+    AGENT_ATTACK = "agent_attack"
+    MULTIMODAL = "multimodal"
+
+
+# NOVO: Modelo para armazenar os resultados do Recon
+class TargetProfile(BaseModel):
+    """Armazena os resultados de um scan de reconhecimento em um LLM alvo."""
+    model_name: Optional[str] = Field(None, description="Nome do modelo inferido")
+    defense_type: Optional[str] = Field(None, description="Tipo de defesa/guardrail detectado")
+    system_prompt_hint: Optional[str] = Field(None, description="Pistas sobre o prompt do sistema")
+    supports_multimodal: bool = Field(False, description="Indica se o alvo suporta entradas multimodais")
 
 
 class BaseTaxon(BaseModel):
@@ -70,6 +89,12 @@ class Technique(BaseTaxon):
     prerequisites: List[str] = Field(default_factory=list, description="Pré-requisitos")
     examples: List[str] = Field(default_factory=list, description="Exemplos de uso")
     
+    # CAMPOS AVANÇADOS
+    mitre_atlas_id: Optional[str] = Field(None, description="ID correspondente no framework MITRE ATLAS (ex: AML.T0001)")
+    chainable_techniques: Optional[List[str]] = Field(default_factory=list, description="Lista de IDs de técnicas que podem ser encadeadas após esta.")
+    attack_type: AttackType = Field(AttackType.BYPASS, description="Tipo de ataque que esta técnica executa.")
+    template_file: Optional[str] = Field(None, description="Arquivo de template específico para esta técnica (ex: rag_attack.md)")
+
     @validator('complexity')
     def validate_complexity(cls, v):
         if v and v not in ['simple', 'medium', 'complex']:

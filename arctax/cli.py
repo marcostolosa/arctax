@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Optional, List, Dict, Any
 import json
 import yaml
+import asyncio
 
 import typer
 from rich.console import Console
@@ -19,6 +20,8 @@ from .model import Intent, Technique, Evasion, generate_schemas
 from .compose import PromptComposer
 from .compose.bypass_generator import BypassGenerator, BypassRequest
 from .index import TaxonomyIndexer, TaxonomySearcher
+from .recon.fingerprinter import Fingerprinter
+from .multimodal.payload_generator import generate_image_payload
 
 # Inicializa app Typer
 app = typer.Typer(
@@ -572,7 +575,7 @@ def generate(
         # Instruções finais estilo Monokai
         console.print("[bold bright_white on bright_yellow]   >>> PROXIMOS PASSOS <<<   [/bold bright_white on bright_yellow]")
         console.print("[bright_yellow]1.[/bright_yellow] [white]Copie um dos prompts destacados acima[/white]")
-        console.print("[bright_yellow]2.[/bright_yellow] [white]Cole no ChatGPT e teste manualmente[/white]") 
+        console.print("[bright_yellow]2.[/bright_yellow] [white]Cole no ChatGPT e teste manualmente[/white]")
         console.print("[bright_yellow]3.[/bright_yellow] [white]Use [bright_cyan]'arctax feedback'[/bright_cyan] para registrar o resultado[/white]")
         console.print("[dim]Exemplo: [bright_green]arctax feedback 1 --success --target \"seu_alvo\" --technique \"tecnica\" --effectiveness 0.8[/bright_green][/dim]")
         
@@ -873,7 +876,59 @@ def schema(
         raise typer.Exit(1)
 
 
+
+@app.command()
+def recon(
+    # No futuro, podemos adicionar argumentos como --target-url
+) -> None:
+    """
+    Executa reconhecimento ativo em um LLM alvo para identificar suas características.
+    """
+    console.print(Panel("[bold cyan]Executando Módulo de Reconhecimento Ativo (Fingerprinting)[/bold cyan]"))
+    
+    try:
+        fingerprinter = Fingerprinter()
+        # Executa com asyncio.run para função síncrona
+        profile = asyncio.run(fingerprinter.run_recon())
+        
+        console.print("\n[green]Reconhecimento concluído com sucesso![/green]")
+        
+        # Exibe resultados em uma tabela
+        table = Table(title="Perfil do LLM Alvo")
+        table.add_column("Característica", style="cyan", no_wrap=True)
+        table.add_column("Valor", style="magenta")
+        
+        table.add_row("Nome do Modelo Inferido", profile.model_name or "Não detectado")
+        table.add_row("Tipo de Defesa Inferido", profile.defense_type or "Não detectado")
+        table.add_row("Suporte Multi-Modal", "Sim" if profile.supports_multimodal else "Não")
+        
+        console.print(table)
+
+    except Exception as e:
+        console.print(f"[red]Erro durante o reconhecimento:[/red] {e}")
+        raise typer.Exit(1)
+
+@app.command()
+def generate_image(
+    text: str = typer.Option(..., "--text", "-t", help="Texto para embutir na imagem."),
+    output_dir: Path = typer.Option(Path("generated_payloads"), "--output-dir", "-o", help="Diretório de saída para a imagem.")
+) -> None:
+    """
+    Gera um payload de imagem com texto embutido para ataques multi-modais.
+    """
+    console.print(Panel(f"[bold cyan]Gerando Payload de Imagem[/bold cyan]\nTexto: '{text}'"))
+    
+    try:
+        output_path = generate_image_payload(text, output_dir)
+        console.print(f"\n[green]Payload de imagem gerado com sucesso![/green]")
+        console.print(f"Caminho: {output_path.resolve()}")
+    except Exception as e:
+        console.print(f"[red]Erro durante a geração da imagem:[/red] {e}")
+        raise typer.Exit(1)
+
+
 def _ensure_data_loaded():
+
     """Garante que dados foram carregados"""
     if not state.data_loaded:
         # Tenta carregar do disco

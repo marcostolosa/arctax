@@ -1,0 +1,73 @@
+{
+  "description": "JSON Schema para validação de objetos DefenseItem",
+  "properties": {
+    "id": {
+      "description": "ID único do item",
+      "title": "Id",
+      "type": "string"
+    },
+    "title": {
+      "description": "Título do item",
+      "minLength": 1,
+      "title": "Title",
+      "type": "string"
+    },
+    "checklist": {
+      "description": "Lista de verificações",
+      "items": {
+        "type": "string"
+      },
+      "title": "Checklist",
+      "type": "array"
+    },
+    "questions": {
+      "description": "Perguntas de auditoria",
+      "items": {
+        "type": "string"
+      },
+      "title": "Questions",
+      "type": "array"
+    },
+    "references": {
+      "description": "Links de referência",
+      "items": {
+        "type": "string"
+      },
+      "title": "References",
+      "type": "array"
+    },
+    "category": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Categoria (app_defense, threat_model, etc)",
+      "title": "Category"
+    },
+    "priority": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Prioridade: low, medium, high",
+      "title": "Priority"
+    }
+  },
+  "required": [
+    "id",
+    "title"
+  ],
+  "title": "DefenseItem Schema",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

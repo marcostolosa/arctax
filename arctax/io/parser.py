@@ -142,7 +142,7 @@ class MarkdownParser:
         lists = {}
         
         # Padrão para listas após headers
-        sections = re.split(r'^#{2,3}\s+(.+?)$', content, flags=re.MULTILINE)[1:]
+        sections = re.split(r'^(#{2,3})\s+(.+?)$', content, flags=re.MULTILINE)[1:]
         
         for i in range(0, len(sections), 2):
             if i + 1 >= len(sections):
@@ -162,10 +162,10 @@ class MarkdownParser:
         """Extrai links do markdown"""
         
         # Padrão para links markdown [texto](url)
-        markdown_links = re.findall(r'\\[.+?\\]\\(([^)]+)\\)', content)
+        markdown_links = re.findall(r'\[.+?\]\(([^)]+)\)', content)
         
         # Padrão para URLs simples
-        url_pattern = r'https?://[^\\s<>\"\\[\\]{}|^`]+'
+        url_pattern = r'https?://[^\s<>"\\[\]{}|^`]+'
         simple_urls = re.findall(url_pattern, content)
         
         # Combina e limpa
@@ -299,7 +299,7 @@ class MarkdownParser:
         if any(word in content for word in ['hard', 'difficult', 'undetectable', 'stealth']):
             return 'hard'
         elif any(word in content for word in ['medium', 'moderate']):
-            return 'medium' 
+            return 'medium'
         elif any(word in content for word in ['easy', 'obvious', 'detectable']):
             return 'easy'
         

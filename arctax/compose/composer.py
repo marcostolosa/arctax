@@ -245,6 +245,53 @@ class PromptComposer:
         
         return generated_files
     
+    def compose_chain(self,
+                     intent: Intent,
+                     techniques: List[Technique],
+                     evasion: Optional[Evasion] = None,
+                     template_type: str = 'red_team',
+                     **kwargs) -> str:
+        """
+        Compõe um prompt usando uma cadeia de técnicas.
+        
+        Args:
+            intent: O objetivo do ataque.
+            techniques: Uma lista de objetos Technique para encadear.
+            evasion: Técnica de evasão opcional.
+            template_type: O tipo de template a ser usado (fallback).
+            **kwargs: Outras variáveis para o template.
+
+        Returns:
+            O prompt composto como uma string.
+        """
+        if not techniques:
+            raise ValueError("A lista de técnicas não pode estar vazia.")
+
+        primary_technique = techniques[0]
+        
+        # LÓGICA DINÂMICA DE TEMPLATE
+        if primary_technique.template_file:
+            template_file = primary_technique.template_file
+        else:
+            if template_type not in self.available_templates:
+                raise ValueError(f"Template '{template_type}' não existe e nenhum template_file foi especificado na técnica. Disponíveis: {list(self.available_templates.keys())}")
+            template_file = self.available_templates[template_type]
+
+        template = self.env.get_template(template_file)
+
+        # A primeira técnica é a primária, mas a lista inteira está disponível.
+        variables = {
+            'intent': intent,
+            'technique': primary_technique, # Mantém para compatibilidade com templates antigos
+            'techniques': techniques,
+            'evasion': evasion,
+        }
+        
+        # Adiciona quaisquer outras variáveis passadas
+        variables.update(kwargs)
+
+        return template.render(**variables)
+
     def list_templates(self) -> Dict[str, str]:
         """Lista templates disponíveis"""
         return self.available_templates.copy()
